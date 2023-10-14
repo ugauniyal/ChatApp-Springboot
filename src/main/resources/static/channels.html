@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Channel List</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+<h1>All Channels</h1>
+<ul id="allChannels">
+    <!-- Channels will be displayed here -->
+</ul>
+
+<h1>Joined Channels</h1>
+<ul id="joinedChannels">
+    <!-- Joined channels will be displayed here -->
+</ul>
+
+<script>
+    // Fetch all channels and display them
+    fetch('/getChannels')
+        .then(response => response.json())
+        .then(data => {
+            const allChannelsList = document.getElementById('allChannels');
+            data.forEach(channel => {
+                const listItem = document.createElement('li');
+                listItem.textContent = channel;
+                allChannelsList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error fetching all channels:', error));
+
+    // Fetch joined channels and display them
+    fetch('/allsubbed')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const joinedChannelsList = document.getElementById('joinedChannels');
+            data.forEach(channel => {
+                const listItem = document.createElement('li');
+                console.log(channel);
+                listItem.textContent = channel;
+                joinedChannelsList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error fetching joined channels:', error));
+</script>
+<!-- Add your JavaScript code here to fetch and display channels -->
+</body>
+</html>

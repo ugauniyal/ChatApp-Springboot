@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+</head>
+<body>
+<h1>User Registration</h1>
+
+<!-- Registration Form -->
+<form th:action="@{/createUser}" method="post" id="registrationForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <button type="button" onclick="submitRegistration()">Register</button>
+</form>
+
+<p id="successMessage"></p>
+
+
+<script>
+    function submitRegistration() {
+        const form = document.getElementById("registrationForm");
+        const formData = {
+            username: form.elements.username.value,
+            email: form.elements.email.value,
+            password: form.elements.password.value
+        };
+
+        fetch("/createUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Registration was successful
+                return "Registration successful. Please verify your email."; // or response.json() if you expect JSON response
+            } else {
+                // Registration failed with an error status
+                throw new Error('Registration failed');
+            }
+        })
+        .then(message => {
+            // Handle a successful response here (e.g., show a success message)
+            document.getElementById("successMessage").textContent = message;
+        })
+        .catch(error => {
+            // Handle any errors here (e.g., display an error message)
+            console.error(error);
+            alert("Registration failed. Please try again."); // Display an error message
+        });
+    }
+</script>
+
+</body>
+</html>

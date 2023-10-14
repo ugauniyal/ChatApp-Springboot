@@ -1,0 +1,60 @@
+/* Style for the chat container */
+#chat-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+/* Style for chat messages */
+#chat-messages {
+    max-height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Style for chat input */
+#message-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Style for the send button */
+#send-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Style for chat messages */
+.chat-message {
+    margin-top: 10px;
+    background-color: #e2e2e2;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Style for chat messages sent by the user */
+.chat-message.sent {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Style for chat messages received from others */
+.chat-message.received {
+    background-color: #e2e2e2;
+}

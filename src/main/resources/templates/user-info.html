@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Information</title>
+</head>
+<body>
+<h1>User Information</h1>
+<div th:if="${user != null}">
+    <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+
+
+    <!-- Delete User Button -->
+    <form th:action="@{/deleteUser}" method="post">
+        <button type="submit">Delete User</button>
+    </form>
+
+</div>
+<div th:if="${user == null}">
+    <p>User not found or not logged in.</p>
+</div>
+</body>
+</html>
